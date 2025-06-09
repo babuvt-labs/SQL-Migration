@@ -1,4 +1,8 @@
--- Get row count for all user tables in the database
+### Row Count per Table in SQL Server
+
+This SQL query returns row counts for all user-defined tables in the current database by summing up the rows from clustered indexes and heaps.
+
+```sql
 SELECT 
     QUOTENAME(SCHEMA_NAME(sOBJ.schema_id)) + '.' + QUOTENAME(sOBJ.name) AS [TableName],
     SUM(sdmvPTNS.row_count) AS [RowCount]
@@ -7,12 +11,12 @@ FROM
     INNER JOIN sys.dm_db_partition_stats AS sdmvPTNS
         ON sOBJ.object_id = sdmvPTNS.object_id
 WHERE 
-    sOBJ.type = 'U'                    -- User tables only
-    AND sOBJ.is_ms_shipped = 0x0      -- Exclude system tables
-    AND sdmvPTNS.index_id < 2          -- Include clustered index (1) and heap (0)
+    sOBJ.type = 'U' 
+    AND sOBJ.is_ms_shipped = 0x0 
+    AND sdmvPTNS.index_id < 2
 GROUP BY 
     sOBJ.schema_id,
     sOBJ.name
 ORDER BY 
-    [TableName]
+    [TableName];
 GO
