@@ -12,7 +12,7 @@ RECONFIGURE;
 EXEC sp_configure 'Database Mail XPs';
 ```
 
-If the `run_value` is `1`, Database Mail is enabled. If it's `0`, it is not enabled[^7][^5].
+If the `run_value` is `1`, Database Mail is enabled. If it's `0`, it is not enabled.
 
 ## 2. Check for Database Mail Configuration
 
@@ -23,7 +23,7 @@ SELECT * FROM msdb.dbo.sysmail_profile;
 SELECT * FROM msdb.dbo.sysmail_account;
 ```
 
-If these queries return rows, Database Mail profiles/accounts are configured[^3][^5][^9].
+If these queries return rows, Database Mail profiles/accounts are configured.
 
 ## 3. Check if Database Mail Has Been Used (Sent Emails)
 
@@ -32,7 +32,7 @@ To see if Database Mail has actually been used to send emails, query the followi
 - `sysmail_sentitems`: Shows emails that were successfully sent.
 - `sysmail_faileditems`: Shows emails that failed to send.
 - `sysmail_unsentitems`: Shows emails still in the queue.
-- `sysmail_allitems`: Shows all mail items, regardless of status[^1][^6].
+- `sysmail_allitems`: Shows all mail items, regardless of status.
 
 For example, to see all sent emails in the last week:
 
@@ -42,7 +42,7 @@ FROM msdb.dbo.sysmail_sentitems
 WHERE sent_date >= DATEADD(dd, -7, GETDATE());
 ```
 
-This will list all emails sent via Database Mail in the past week[^6].
+This will list all emails sent via Database Mail in the past week.
 
 ## 4. Review the Database Mail Log
 
@@ -52,7 +52,7 @@ You can also review the Database Mail log for activity:
 SELECT * FROM msdb.dbo.sysmail_event_log;
 ```
 
-This log will show events related to Database Mail, including errors and process status[^1][^2].
+This log will show events related to Database Mail, including errors and process status.
 
 ## 5. Test Sending a Mail (Optional)
 
@@ -66,7 +66,7 @@ EXEC msdb.dbo.sp_send_dbmail
     @body = 'This is a test email from SQL Server Database Mail.';
 ```
 
-Check the status in `sysmail_sentitems` or `sysmail_faileditems` after sending[^5][^6].
+Check the status in `sysmail_sentitems` or `sysmail_faileditems` after sending.
 
 ---
 
@@ -79,7 +79,7 @@ Check the status in `sysmail_sentitems` or `sysmail_faileditems` after sending[^
 | Has it been used? | Query `sysmail_sentitems`, `sysmail_allitems`, etc. |
 | Log of activity/errors? | Query `sysmail_event_log` |
 
-By following these steps, you can definitively determine whether Database Mail is enabled, configured, and actively used in your SQL Server environment[^1][^5][^6][^7].
+By following these steps, you can definitively determine whether Database Mail is enabled, configured, and actively used in your SQL Server environment.
 
 <div style="text-align: center">⁂</div>
 
