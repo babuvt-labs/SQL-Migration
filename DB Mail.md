@@ -1,5 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" class="logo" width="120"/>
-
 # How do I understand if DB Mail in SQL server is used
 
 To determine if Database Mail (DB Mail) is being used in your SQL Server environment, you can follow these steps:
