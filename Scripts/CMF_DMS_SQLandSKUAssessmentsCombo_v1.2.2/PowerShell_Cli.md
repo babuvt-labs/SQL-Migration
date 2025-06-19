@@ -1,4 +1,4 @@
-# Azure DMS: Elastic Pools SKU Recommendation with PowerShell & CLI
+# Azure DMS: Elastic Pools SKU Recommendation with PowerShell & CLI.
 
 This guide explains how to use **Azure Database Migration Service (DMS)** to generate **Elastic Pool SKU recommendations** using Azure PowerShell or Azure CLI.
 
