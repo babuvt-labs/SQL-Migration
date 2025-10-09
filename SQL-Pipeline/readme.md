@@ -60,5 +60,3 @@ az dms create-task --resource-group rg-sqlmi-production \
 - Set up monitoring (Azure Monitor, alerts)
 - Enable threat detection
 - Configure firewall rules
-
-Would you like me to provide more details on any specific part, such as the DMS online migration approach, GitHub Actions alternative, or specific database compatibility checks?
